@@ -1,0 +1,478 @@
+/* style.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Varsayılan arka plan */
+    min-height: 100vh;
+    display: flex; /* İçeriği ortalamak için */
+    flex-direction: column; /* İçeriği dikey olarak sırala */
+    align-items: center; /* Yatayda ortala */
+    justify-content: flex-start; /* İçeriği yukarıdan başlat */
+    padding: 20px;
+    margin: 0; /* Sayfa kenar boşluğunu sıfırla */
+    transition: background 1s ease-in-out; /* Arka plan geçişi için */
+    overflow-y: auto; /* Dikeyde kaydırmaya izin ver */
+    overflow-x: hidden; /* Yatayda kaydırmayı engelle */
+}
+
+/* Hava durumu temalı arka planlar */
+body.clear-sky-bg {
+    background: linear-gradient(135deg, #87CEEB 0%, #00BFFF 100%); /* Açık mavi gökyüzü */
+}
+
+body.clouds-bg {
+    background: linear-gradient(135deg, #B0C4DE 0%, #778899 100%); /* Bulutlu gri tonları */
+}
+
+body.rain-bg {
+    background: linear-gradient(135deg, #A9A9A9 0%, #708090 100%); /* Yağmurlu gri tonları */
+}
+
+body.snow-bg {
+    background: linear-gradient(135deg, #E0FFFF 0%, #ADD8E6 100%); /* Karlı açık mavi tonları */
+}
+
+body.thunderstorm-bg {
+    background: linear-gradient(135deg, #696969 0%, #2F4F4F 100%); /* Fırtınalı koyu tonlar */
+}
+
+body.mist-bg {
+    background: linear-gradient(135deg, #D3D3D3 0%, #A9A9A9 100%); /* Sisli açık gri tonları */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    margin: 20px auto; /* Üstten ve alttan boşluk, yatayda ortala */
+    box-sizing: border-box; /* Padding'in genişliğe dahil olmasını sağla */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px; /* İkon ve başlık arası boşluk */
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+/* Hava durumu ikonunu yerleştirmek için yeni stil */
+.weather-icon-large {
+    font-size: 5em; /* İkonun boyutunu ayarla */
+    display: block; /* Blok element olarak göster */
+    margin-right: 15px; /* Başlıktan biraz boşluk bırak */
+    line-height: 1; /* Satır yüksekliğini ayarla */
+}
+
+
+h1 {
+    font-size: 2.8em;
+    color: #333;
+    margin: 0;
+}
+
+.header-buttons {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px; /* Butonlar arası boşluk */
+    justify-content: center; /* Butonları ortala */
+}
+
+.header-buttons button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50; /* Yeşil */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-buttons button:hover {
+    background-color: #45a049;
+}
+
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Küçük ekranlarda alt alta geçiş */
+}
+
+.search-select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    flex-grow: 1; /* Mevcut alanı doldur */
+    max-width: 250px; /* Max genişlik */
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background-color: #007bff; /* Mavi */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #0056b3;
+}
+
+.weather-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Başlangıçta gizli */
+    text-align: center;
+}
+
+.weather-card.location-weather-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f8ff; /* Açık mavi */
+    border: 1px solid #e0f0ff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.weather-card.location-weather-card h2 {
+    font-size: 1.5em;
+    color: #444;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.current-location-info p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.weather-icon {
+    width: 100px; /* İkonun genişliği */
+    height: 100px; /* İkonun yüksekliği */
+    margin-bottom: 10px;
+}
+
+.weather-temp {
+    font-size: 4em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.city-name {
+    font-size: 2em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.weather-desc {
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.weather-details, .marine-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* İki sütunlu düzen */
+    gap: 15px;
+    text-align: left;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.detail-item {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-size: 0.95em;
+    color: #444;
+}
+
+.detail-item strong {
+    color: #333;
+}
+
+.sun-info-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap; /* Küçük ekranlarda alt alta geçiş */
+    gap: 15px;
+}
+
+.sun-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.1em;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-width: 120px; /* Minimum genişlik */
+    flex: 1; /* Esnek boyut */
+    max-width: 48%; /* Yan yana iki item için */
+}
+
+.sun-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.map-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: none; /* Başlangıçta gizli */
+}
+
+#weatherMap, #marineMap {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.error {
+    color: #d9534f;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: none;
+    font-size: 0.9em;
+}
+
+.loading {
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    font-weight: bold;
+    display: none;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.weather-card {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Rain Animation */
+.rain-drop {
+    position: absolute;
+    background-color: #a7d9fe;
+    width: 2px;
+    height: 15px;
+    opacity: 0.7;
+    animation: fall linear infinite;
+    transform-origin: bottom;
+    border-radius: 0 0 50% 50%; /* Damla şekli */
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) scaleY(0);
+        opacity: 0;
+    }
+    30% {
+        transform: translateY(0px) scaleY(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) scaleY(0);
+        opacity: 0;
+    }
+}
+
+/* Snow Animation */
+.snowflake {
+    position: absolute;
+    color: #fff;
+    opacity: 0.8;
+    font-size: 1em;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translate(0, -100px);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(calc(var(--rand-x) * 1px), 100vh);
+        opacity: 0;
+    }
+}
+
+/* Cloud Animation */
+.cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    animation: moveClouds linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 60%;
+    height: 60%;
+    top: -30%;
+    left: 10%;
+}
+
+.cloud::after {
+    width: 70%;
+    height: 70%;
+    top: -20%;
+    right: 10%;
+}
+
+@keyframes moveClouds {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(150%);
+    }
+}
+
+/* Sun Ray Animation */
+.sun-ray {
+    position: absolute;
+    width: 4px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255, 255, 0, 0.8), rgba(255, 255, 0, 0));
+    border-radius: 2px;
+    animation: pulseRay 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulseRay {
+    0% {
+        transform: scaleY(0.5) rotate(var(--angle));
+        opacity: 0.7;
+    }
+    100% {
+        transform: scaleY(1) rotate(var(--angle));
+        opacity: 1;
+    }
+}
+
+
+/* Mobil uyumluluk */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .search-select,
+    .search-input,
+    .search-btn {
+        width: 100%;
+    }
+
+    .weather-icon {
+        font-size: 60px;
+    }
+
+    .weather-temp {
+        font-size: 3em;
+    }
+
+    .city-name {
+        font-size: 1.8em;
+    }
+
+    .weather-desc {
+        font-size: 1.1em;
+    }
+
+    .weather-details {
+        grid-template-columns: 1fr; /* Mobil cihazlarda tek sütun */
+    }
+
+    .header {
+        flex-direction: column; /* Mobil cihazlarda alt alta */
+    }
+
+    .logo {
+        height: 50px; /* Mobil cihazlarda daha küçük logo */
+    }
+
+    .sun-info-container {
+        flex-direction: column; /* Mobil cihazlarda alt alta */
+        align-items: center;
+    }
+
+    .sun-info {
+        width: 80%;
+    }
+}
+
+/* Yeni CSS eklemeleri */
+.marine-info-page {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.marine-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+    text-align: left;
+}
